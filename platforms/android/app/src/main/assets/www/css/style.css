@@ -1,0 +1,165 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+  }
+  
+  /* Header */
+  .header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+  }
+  
+  /* Burger Button */
+  .burger {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  /* Side Menu (initially hidden off-canvas) */
+  .menu {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #444;
+    color: #fff;
+    transition: left 0.3s ease;
+    z-index: 1000;
+    padding-top: 60px;
+  }
+  
+  .menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .menu ul li {
+    padding: 15px 20px;
+    border-bottom: 1px solid #555;
+  }
+  
+  .menu ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  /* Overlay */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 500;
+  }
+  
+  /* Content */
+  .content {
+    padding: 20px;
+  }
+  
+  /* Active states for menu and overlay */
+  .menu.active {
+    left: 0;
+  }
+  
+  .overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  /* ----------------- */
+  /* RADIO SECTION STYLES */
+  .radio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .radio-item {
+    background: #f4f4f4;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .radio-icon {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 10px;
+  }
+  
+  .radio-info h3 {
+    margin: 10px 0;
+  }
+  
+  .play-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  .play-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* ----------------- */
+  /* PROGRAMMES SECTION STYLES */
+  .programme-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .programme-item {
+    background: #f4f4f4;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .programme-item:hover {
+    transform: scale(1.02);
+  }
+  
+  .programme-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+  
+  .programme-item h3 {
+    margin: 10px 0 0;
+    font-size: 16px;
+  }
+  
+  /* ----------------- */
+  /* Programme Viewer Back Button */
+  .back-button {
+    background: none;
+    border: none;
+    color: #007bff;
+    font-size: 18px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  

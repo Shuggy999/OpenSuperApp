@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Cordova App with Multiple Sections</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Include hls.js if needed -->
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+</head>
+<body>
+  <!-- Side Menu -->
+  <div id="menu" class="menu">
+    <ul>
+      <li><a href="#" data-section="section-home">Home</a></li>
+      <li><a href="#" data-section="section-radio">Radio Stations</a></li>
+      <li><a href="#" data-section="section-programmes">Wolves Matchday Programmes</a></li>
+      <li><a href="#" data-section="section-webpage">Auction</a></li>
+      <li><a href="#" data-section="section-dog">Dog Image</a></li>
+      <li><a href="#" data-section="section-about">About</a></li>
+    </ul>
+  </div>
+  
+  <!-- Overlay -->
+  <div id="overlay" class="overlay"></div>
+  
+  <!-- Header with Burger Button -->
+  <header class="header">
+    <button id="burger" class="burger">&#9776;</button>
+  </header>
+  
+  <!-- Main Content Container -->
+  <div id="content" class="content">
+    <!-- The default section (home) will be loaded here -->
+  </div>
+  
+  <script src="js/app.js"></script>
+</body>
+</html>

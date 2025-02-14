@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Cordova App with Multiple Sections</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Include hls.js if you use HLS streams in other sections -->
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+</head>
+<body>
+  <!-- Side Menu -->
+  <div id="menu" class="menu">
+    <ul>
+      <li><a href="#" id="menu-radio">Radio Stations</a></li>
+      <li><a href="#" id="menu-programmes">Wolves Matchday Programmes</a></li>
+      <li><a href="#" id="menu-webpage">Auction</a></li>
+      <li><a href="#" id="menu-dog">Dog Image</a></li>
+      <li><a href="#" id="menu-about">About</a></li>
+    </ul>
+  </div>
+  
+  <!-- Overlay -->
+  <div id="overlay" class="overlay"></div>
+  
+  <!-- Header with Burger Button -->
+  <header class="header">
+    <button id="burger" class="burger">&#9776;</button>
+  </header>
+  
+  <!-- Main Content -->
+  <div class="content">
+    <!-- Home Section (default) -->
+    <div id="section-home" class="section">
+      <h1>Home</h1>
+      <p>Welcome to the home page.</p>
+    </div>
+    
+    <!-- Radio Section with Grid -->
+    <div id="section-radio" class="section" style="display:none">
+      <h1>Radio Stations</h1>
+      <div class="radio-grid">
+        <!-- BBC Radio 3 -->
+        <div class="radio-item">
+          <img src="img/bbc_radio3.png" alt="BBC Radio 3" class="radio-icon">
+          <div class="radio-info">
+            <h3>BBC Radio 3</h3>
+            <button class="play-button" data-stream="https://as-hls-ww.live.cf.md.bbci.co.uk/pool_23461179/live/ww/bbc_radio_three/bbc_radio_three.isml/bbc_radio_three-audio%3d320000.norewind.m3u8">
+              ▶ Play
+            </button>
+          </div>
+        </div>
+        <!-- YLE Klassinen -->
+        <div class="radio-item">
+          <img src="img/yle_klassinen.jpg" alt="YLE Klassinen" class="radio-icon">
+          <div class="radio-info">
+            <h3>YLE Klassinen</h3>
+            <button class="play-button" data-stream="https://yleradiolive.akamaized.net/hls/live/2027676/in-YleKlassinen/master.m3u8">
+              ▶ Play
+            </button>
+          </div>
+        </div>
+        <!-- ABC Classics (Australia) -->
+        <div class="radio-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzXC9O6uFniLpI6HIZbzRwdquEOtwKNYfO-g&s" alt="ABC Classics (Australia)" class="radio-icon">
+            <div class="radio-info">
+            <h3>ABC Classics (Australia)</h3>
+            <button class="play-button" data-stream="https://mediaserviceslive.akamaized.net/hls/live/2038316/classicfmnsw/master.m3u8">
+                ▶ Play
+            </button>
+            </div>
+        </div>
+        <!-- ABC Classics 2 (Australia) -->
+        <div class="radio-item">
+            <img src="https://static.mytuner.mobi/media/tvos_radios/YSVBYHwAf3.jpg" alt="ABC Classics 2 (Australia)" class="radio-icon">
+            <div class="radio-info">
+            <h3>ABC Classics 2 (Australia)</h3>
+            <button class="play-button" data-stream="https://mediaserviceslive.akamaized.net/hls/live/2038317/classic2/master.m3u8">
+                ▶ Play
+            </button>
+            </div>
+        </div>
+        <!-- BR Klassik (Barvia, Germany) -->
+        <div class="radio-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQR4eM9hoIluRszC_-KHxEOdJ2ES-Gh4g9cnA&s" alt="BR Klassik (Barvia, Germany)" class="radio-icon">
+            <div class="radio-info">
+            <h3>BR Klassik (Barvia, Germany)</h3>
+            <button class="play-button" data-stream="https://dispatcher.rndfnk.com/br/brklassik/live/mp3/low">
+                ▶ Play
+            </button>
+            </div>
+        </div>
+        <!-- MDR Klassik (Saxony, Germany) -->
+        <div class="radio-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtvtVLVGnNi4QxIEtSg4OU9-SunyWwAJtmXg&s" alt="MDR Klassik (Saxony, Germany)" class="radio-icon">
+            <div class="radio-info">
+            <h3>MDR Klassik (Saxony, Germany)</h3>
+            <button class="play-button" data-stream="https://mdr-284350-0.sslcast.mdr.de/mdr/284350/0/mp3/high/stream.mp3">
+                ▶ Play
+            </button>
+            </div>
+        </div>
+        <!-- MDR Kultur Livestream (Saxony, Germany) -->
+        <div class="radio-item">
+            <img src="https://uk.radio.net/300/mdrkultur.png?version=deeb315d8934cd1e76c8c3ac63af4dc5" alt="MDR Kultur Livestream (Saxony, Germany)" class="radio-icon">
+            <div class="radio-info">
+            <h3>MDR Kultur Livestream (Saxony, Germany)</h3>
+            <button class="play-button" data-stream="https://mdr-284310-0.sslcast.mdr.de/mdr/284310/0/aac/high/stream.aac">
+                ▶ Play
+            </button>
+            </div>
+        </div>
+        <!-- MDR Kultur Klassik im Konzert (Saxony, Germany) -->
+        <div class="radio-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlDRIK5sIkR2Af8kbWckffXrDvLL1egq0oVg&s" alt="MDR Kultur Klassik im Konzert (Saxony, Germany)" class="radio-icon">
+            <div class="radio-info">
+            <h3>MDR Kultur Klassik im Konzert (Saxony, Germany)</h3>
+            <button class="play-button" data-stream="https://mdr-284311-0.sslcast.mdr.de/mdr/284311/0/mp3/high/stream.mp3">
+                ▶ Play
+            </button>
+            </div>
+        </div>
+        <!-- CBC Radio Music (Ottawa, Canada) -->
+        <div class="radio-item">
+            <img src="https://i.cbc.ca/1.4481543.1557930358!/fileImage/httpImage/image.jpg_gen/derivatives/square_1180/cbc-music-logo.jpg?im=" alt="CBC Radio Music (Ottawa, Canada)" class="radio-icon">
+            <div class="radio-info">
+            <h3>CBC Radio Music (Ottawa, Canada)</h3>
+            <button class="play-button" data-stream="https://cbcradiolive.akamaized.net/hls/live/2041057/ES_R2ETR/adaptive_192/chunklist_ao.m3u8">
+                ▶ Play
+            </button>
+            </div>
+        </div>
+        <!-- Classic FM (UK) -->
+        <div class="radio-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQirYjgFQgM9eZG4LB3G64KiQJ9eAf2VI5pw&s" alt="Classic FM (UK)" class="radio-icon">
+            <div class="radio-info">
+            <h3>Classic FM (UK)</h3>
+            <button class="play-button" data-stream="https://media-ssl.musicradio.com/ClassicFM">
+                ▶ Play
+            </button>
+            </div>
+        </div>
+        <!-- NPO klassiek (The Netherlands) -->
+        <div class="radio-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPmHRVl88YxJV7xYHQ28ihctrhO8SEjlBVeg&s" alt="NPO klassiek (The Netherlands)" class="radio-icon">
+            <div class="radio-info">
+            <h3>NPO klassiek (The Netherlands)</h3>
+            <button class="play-button" data-stream="https://icecast.omroep.nl/radio4-bb-mp3">
+                ▶ Play
+            </button>
+            </div>
+        </div>
+        <!-- Radio Clásica (Spain) -->
+        <div class="radio-item">
+            <img src="https://assets.radioplayer.org/724/724502/600/600/l6ugv5u2.png" alt="Radio Clásica (Spain)" class="radio-icon">
+            <div class="radio-info">
+            <h3>Radio Clásica (Spain)</h3>
+            <button class="play-button" data-stream="https://rtvelivestream.rtve.es/rtvesec/rne/rne_r2_main.m3u8">
+                ▶ Play
+            </button>
+            </div>
+        </div>
+        <!-- Radio Classica Bresciana (Brescia, Italy) -->
+        <div class="radio-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSwW6WzjDlmuL-1Ryqd81VVL54_OAdhZuxUw&s" alt="Radio Classica Bresciana (Brescia, Italy)" class="radio-icon">
+            <div class="radio-info">
+            <h3>Radio Classica Bresciana (Brescia, Italy)</h3>
+            <button class="play-button" data-stream="https://nmcdn-3177cee185284d2990021eccc8b06ae6.msvdn.net/icecastRelay/S66374741/yNMp1W7wbgWY/icecast">
+                ▶ Play
+            </button>
+            </div>
+        </div>
+        <!-- Radio Classique (France) -->
+        <div class="radio-item">
+            <img src="https://play-lh.googleusercontent.com/a3dsesp0JLt1M5AJw_b6iQ_UeNiiWLZ_Ca_aitWVAuXMnLm1vGC-DzKlktuO-ZEAG2c" alt="Radio Classique (France)" class="radio-icon">
+            <div class="radio-info">
+            <h3>Radio Classique (France)</h3>
+            <button class="play-button" data-stream="https://ice.creacast.com/classique-rp?aw_0_1st.rpfr=%7EREQUEST_PREROLL%7E">
+                ▶ Play
+            </button>
+            </div>
+        </div>
+        <!-- Radio New Zealand Concert (New Zealand) -->
+        <div class="radio-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTazeNvzYJj4QXops4dmMyry6pRMJp3kY0_Ug&s" alt="Radio New Zealand Concert (New Zealand)" class="radio-icon">
+            <div class="radio-info">
+            <h3>Radio New Zealand Concert (New Zealand)</h3>
+            <button class="play-button" data-stream="https://radionz.streamguys1.com/concert/concert/playlist.m3u8">
+                ▶ Play
+            </button>
+            </div>
+        </div>
+        <!-- Radio Romania Muzical (Romania) -->
+        <div class="radio-item">
+            <img src="https://yt3.googleusercontent.com/MzQWFi9qY9TSVhxlugtunHMwLq1dVMCKak8JTC5PvErmVJSxZXdVhGu-ooqOx7WRYBDwyV0EXg=s900-c-k-c0x00ffffff-no-rj" alt="Radio Romania Muzical (Romania)" class="radio-icon">
+            <div class="radio-info">
+            <h3>Radio Romania Muzical (Romania)</h3>
+            <button class="play-button" data-stream="http://stream2.srr.ro:8022">
+                ▶ Play
+            </button>
+            </div>
+        </div>
+        <!-- radio klassik Stephansdom (Austria) -->
+        <div class="radio-item">
+            <img src="https://cdn-radiotime-logos.tunein.com/s11109g.png" alt="radio klassik Stephansdom (Austria)" class="radio-icon">
+            <div class="radio-info">
+            <h3>radio klassik Stephansdom (Austria)</h3>
+            <button class="play-button" data-stream="http://radioklassikstephansdom.ice.infomaniak.ch/radioklassikstephansdom.mp3">
+                ▶ Play
+            </button>
+            </div>
+        </div>
+        <!-- Radio Swiss Classic (DE) (Switzerland) -->
+        <div class="radio-item">
+            <img src="https://static.mytuner.mobi/media/tvos_radios/2F7aNHzEEb.png" alt="Radio Swiss Classic (DE) (Switzerland)" class="radio-icon">
+            <div class="radio-info">
+            <h3>Radio Swiss Classic (DE) (Switzerland)</h3>
+            <button class="play-button" data-stream="https://stream.srg-ssr.ch/rsc_de/mp3_128.m3u">
+                ▶ Play
+            </button>
+            </div>
+        </div>
+        <!-- France Musique (France) -->
+        <div class="radio-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/France_Musique_logo_2021.svg/1200px-France_Musique_logo_2021.svg.png" alt="France Musique (France)" class="radio-icon">
+            <div class="radio-info">
+            <h3>France Musique (France)</h3>
+            <button class="play-button" data-stream="https://icecast.radiofrance.fr/francemusique-midfi.mp3">
+                ▶ Play
+            </button>
+            </div>
+        </div>
+        <!-- Rai Radio 3 Classica (Italy) -->
+        <div class="radio-item">
+            <img src="" alt="Rai Radio 3 Classica (Italy)" class="radio-icon">
+            <div class="radio-info">
+            <h3>Rai Radio 3 Classica (Italy)</h3>
+            <button class="play-button" data-stream="https://radiotreclassica-live.akamaized.net/hls/live/2032595/radiotreclassica/radiotreclassica/radio3classica_256/chunklist.m3u8">
+                ▶ Play
+            </button>
+            </div>
+        </div>
+        <!-- RTÉ lyric fm (Ireland) -->
+        <div class="radio-item">
+            <img src="img/bbc_radio3.png" alt="RTÉ lyric fm (Ireland)" class="radio-icon">
+            <div class="radio-info">
+            <h3>RTÉ lyric fm (Ireland)</h3>
+            <button class="play-button" data-stream="http://icecast.rte.ie/lyric">
+                ▶ Play
+            </button>
+            </div>
+        </div>
+        <!-- Otto's Baroque Music Radio (Switzerland) -->
+        <div class="radio-item">
+            <img src="img/bbc_radio3.png" alt="Otto's Baroque Music Radio (Switzerland)" class="radio-icon">
+            <div class="radio-info">
+            <h3>Otto's Baroque Music Radio (Switzerland)</h3>
+            <button class="play-button" data-stream="https://strm112.1.fm/baroque_mobile_mp3">
+                ▶ Play
+            </button>
+            </div>
+        </div>
+        <!-- Otto's Classical Music Radio (Switzerland) -->
+        <div class="radio-item">
+            <img src="img/bbc_radio3.png" alt="Otto's Classical Music Radio (Switzerland)" class="radio-icon">
+            <div class="radio-info">
+            <h3>Otto's Classical Music Radio (Switzerland)</h3>
+            <button class="play-button" data-stream="https://strm112.1.fm/classical_mobile_mp3">
+                ▶ Play
+            </button>
+            </div>
+        </div>
+        <!-- Ö1 (Austria) -->
+        <div class="radio-item">
+            <img src="img/bbc_radio3.png" alt="Ö1 (Austria)" class="radio-icon">
+            <div class="radio-info">
+            <h3>Ö1 (Austria)</h3>
+            <button class="play-button" data-stream="https://orf-live.ors-shoutcast.at/oe1-q2a">
+                ▶ Play
+            </button>
+            </div>
+        </div>
+        <!-- Opus94 (Mexico City, Mexico) -->
+        <div class="radio-item">
+            <img src="img/bbc_radio3.png" alt="Opus94 (Mexico City, Mexico)" class="radio-icon">
+            <div class="radio-info">
+            <h3>Opus94 (Mexico City, Mexico)</h3>
+            <button class="play-button" data-stream="https://s2.mexside.net/8016/stream">
+                ▶ Play
+            </button>
+            </div>
+        </div>
+        <!-- Venice Classic Radio Auditorium (Venice, Italy) -->
+        <div class="radio-item">
+            <img src="img/bbc_radio3.png" alt="Venice Classic Radio Auditorium (Venice, Italy)" class="radio-icon">
+            <div class="radio-info">
+            <h3>Venice Classic Radio Auditorium (Venice, Italy)</h3>
+            <button class="play-button" data-stream="https://uk2.streamingpulse.com/ssl/vcr1">
+                ▶ Play
+            </button>
+            </div>
+        </div>
+        <!-- Venice Classic Radio Live (Venice, Italy) -->
+        <div class="radio-item">
+            <img src="img/bbc_radio3.png" alt="Venice Classic Radio Live (Venice, Italy)" class="radio-icon">
+            <div class="radio-info">
+            <h3>Venice Classic Radio Live (Venice, Italy)</h3>
+            <button class="play-button" data-stream="https://uk2.streamingpulse.com/ssl/vcr1">
+                ▶ Play
+            </button>
+            </div>
+        </div>
+        <!-- Classic 947 (Shanghai, China) -->
+        <div class="radio-item">
+            <img src="img/bbc_radio3.png" alt="Classic 947 (Shanghai, China)" class="radio-icon">
+            <div class="radio-info">
+            <h3>Classic 947 (Shanghai, China)</h3>
+            <button class="play-button" data-stream="https://live.ximalaya.com/radio-first-page-app/live/54/64.m3u8">
+                ▶ Play
+            </button>
+            </div>
+        </div>
+        <!-- streamtheworld example 128kbs -->
+        <div class="radio-item">
+            <img src="img/bbc_radio3.png" alt="streamtheworld example 128kbs" class="radio-icon">
+            <div class="radio-info">
+            <h3>streamtheworld example 128kbs</h3>
+            <button class="play-button" data-stream="https://playerservices.streamtheworld.com/api/livestream-redirect/CFBTFM_ADP.aac">
+                ▶ Play
+            </button>
+            </div>
+        </div>
+
+
+
+
+      </div>
+      <audio id="radio-player" controls style="width: 100%; margin-top: 20px;"></audio>
+    </div>
+    
+    <!-- Programmes Section (Grid of Cards loaded from XML) -->
+    <div id="section-programmes" class="section" style="display:none">
+      <h1>Programmes</h1>
+      <div id="programme-grid" class="programme-grid">
+        <!-- Programme cards will be dynamically inserted here -->
+      </div>
+    </div>
+    
+    <!-- Programme Viewer Section (displays programme details in an iframe) -->
+    <div id="section-programme-viewer" class="section" style="display:none">
+      <button id="programme-back" class="back-button">← Back</button>
+      <iframe id="programme-frame" src="" style="width:100%; height:calc(100vh - 50px); border:none;"></iframe>
+    </div>
+    
+    <!-- Dog Image Section -->
+    <div id="section-dog" class="section" style="display:none">
+      <h1>Dog Image</h1>
+      <img src="img/dog.jpg" alt="Dog" style="max-width:100%;" />
+    </div>
+    
+    <!-- About Section -->
+    <div id="section-about" class="section" style="display:none">
+      <h1>About</h1>
+      <p>This is a sample app made using Cordiva demonstrating multiple sections.</p>
+      <p>Using a web based aplication allows easy development of new functionality.</p>
+    </div>
+    
+    <!-- Webpage Viewer Section (iframe for 192.168.11.67:5000) -->
+    <div id="section-webpage" class="section" style="display:none">
+      <h1>Webpage Viewer</h1>
+      <iframe id="webpage-frame" src="https://comoauction.it/" style="width:100%; height:90vh; border:none;"></iframe>
+    </div>
+  </div>
+  
+  <script src="js/app.js"></script>
+</body>
+</html>
